@@ -74,5 +74,46 @@ anotherCar.model = "CRV";
 */
 // add some extra if you want
 // Make sure that the function allows for the output of a sentence that describes the hamburger, too
+function Hamburger(bunType, vegetables, cheeses, sauce, pattyType, numOfPatties) {
+    // bun type (white, wheat, etc)
+    this.bunType = bunType;
+    // make vegetables, cheeses, and sauce arrays into a toppings object
+    this.toppings = {
+        vegetables: vegetables,
+        cheeses: cheeses,
+        sauce: sauce
+    };
+    // patty type (beef, chicken, vegetarian, etc)
+    this.pattyType = pattyType;
+    // number of patties
+    this.numOfPatties = numOfPatties;
+    // describe the hamburger
+    this.describe = function () {
+        // create a string to hold the description
+        var returnStr = "";
+        // add all of the information to the string
+        // I used ? : to decide if patty should be patty or patties
+        returnStr += `This is a hamburger on a ${this.bunType} bun with ${this.numOfPatties} ${this.pattyType} ${numOfPatties === 1 ? "patty" : "patties"}.`;
+        returnStr += " It has the following toppings:";
+        returnStr += " \n\n      Vegetables \n-";
+        returnStr += this.toppings.vegetables.join("\n-");
+        returnStr += " \n\n      Cheeses \n-";
+        returnStr += this.toppings.cheeses.join("\n-");
+        returnStr += " \n\n      Sauces \n-";
+        returnStr += this.toppings.sauce.join("\n-");
+        // return the description
+        return returnStr;
 
+        
+    }
+
+}
+// create a new hamburger
+let hamburger1 = new Hamburger("white", ["lettuce", "tomato", "onion"], ["cheddar"], ["ketchup", "mustard"], "beef", 2);
+// output the description
+console.log(hamburger1.describe());
+// create another hamburger
+let hamburger2 = new Hamburger("whole grain", ["spinach", "cucumber", "avocado"], ["swiss", "mozzarella"], ["mayo", "bbq sauce"], "chicken", 1);
+// log that as well
+console.log(hamburger2.describe());
 // This page inspired by and adapted from https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object-oriented_JS
